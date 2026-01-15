@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-deep-navy: #0A0F24;
+    --color-medical-teal: #00C2CB;
+    --color-graphite: #3A3F58;
+    --color-ice-gray: #F6F8FA;
+    --color-success: #28C76F;
+    --color-alert: #FF4D4F;
+  }
+
+  * {
+    @apply border-graphite/20;
+  }
+
+  body {
+    @apply bg-ice-gray text-graphite antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  body.dark {
+    @apply bg-deep-navy text-ice-gray;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Clinical Style */
+  .glass-card {
+    @apply bg-white/80 dark:bg-graphite/30 backdrop-blur-md border border-medical-teal/10
+           rounded-xl shadow-glass transition-all duration-250;
+  }
+
+  .glass-card:hover {
+    @apply shadow-teal-glow border-medical-teal/30;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-medical-teal hover:bg-medical-teal-600 text-white font-semibold
+           px-4 py-2 rounded-lg transition-all duration-180 shadow-sm
+           hover:shadow-teal-glow active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-graphite hover:bg-graphite-400 text-white font-semibold
+           px-4 py-2 rounded-lg transition-all duration-180 shadow-sm
+           active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-medical-teal text-medical-teal hover:bg-medical-teal
+           hover:text-white font-semibold px-4 py-2 rounded-lg
+           transition-all duration-180 active:scale-95;
+  }
+
+  /* Input Styles */
+  .input-field {
+    @apply w-full px-4 py-2 rounded-lg border border-graphite/20
+           bg-white dark:bg-graphite-700 dark:border-graphite-500
+           focus:outline-none focus:ring-2 focus:ring-medical-teal/50
+           focus:border-medical-teal transition-all duration-180;
+  }
+
+  /* Card Styles */
+  .metric-card {
+    @apply glass-card p-6 hover:scale-[1.02] cursor-pointer;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-success {
+    @apply bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300;
+  }
+
+  .badge-error {
+    @apply bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300;
+  }
+
+  .badge-info {
+    @apply bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300;
+  }
+
+  /* Teal Glow Effect */
+  .teal-glow {
+    @apply shadow-teal-glow;
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-medical-teal/30 rounded-full hover:bg-medical-teal/50;
+  }
+
+  /* Loading Animation */
+  .loading-pulse {
+    @apply animate-pulse-slow;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-250 ease-in-out;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
